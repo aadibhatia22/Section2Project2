@@ -1,12 +1,16 @@
 <script>
-  export let videoId = "vZot9cgPKjI";
+  export let videoId = null;
 </script>
 
 <div class="w-[600px] h-[350px] border border-gray-400 bg-gray-50 flex items-center justify-center">
-  <iframe
-    src={`https://www.youtube.com/embed/${videoId}`}
-    allowfullscreen
-    class="w-full h-full"
-    title="Video"
-  ></iframe>
+  {#if videoId}
+    <iframe
+      src={`https://www.youtube.com/embed/${videoId}`}
+      allowfullscreen
+      class="w-full h-full"
+      title={videoId}
+    ></iframe>
+  {:else}
+    <p class="text-gray-500">No video available</p>
+  {/if}
 </div>

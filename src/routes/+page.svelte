@@ -18,7 +18,7 @@
     errorMessage = "";
     try {
       matchObjectArray = await fetchFromAPI(eventCode.trim());
-      console.log("Matches:", matchObjectArray);
+      console.log("Matches:", matchObjectArray[0]);
     } catch (err) {
       console.error(err);
       errorMessage = err.message;
@@ -27,12 +27,17 @@
 
 
 </script>
+
+
+  <!-- ERROR DISPLAY -->
   {#if errorMessage}
     <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
       {errorMessage}
     </div>
   {/if}
 
+
+<!-- INPUT HANDELING -->
 <div class="flex justify-center mt-10 gap-3">
   <input
     bind:value={eventCode}
@@ -48,6 +53,23 @@
   </button>
 </div>
 
+
+<!-- making the matchcards  -->
+{#if matchObjectArray.length > 0}
+  {#each matchObjectArray as match}
+    <MatchCard {match} />
+  {/each}
+{/if}
+{#if matchObjectArray.length <= 0}
+  <div class="mt-4 text-center text-gray-500">
+    No matches loaded. Please enter an event code and click "Load Matches".
+  </div>
+{/if} 
+
+
+
+
+<!-- STYLE -->
 <style>
   .hoverColorChange {
     transition: opacity 0.25s ease;  

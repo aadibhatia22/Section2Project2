@@ -1,3 +1,21 @@
+<script>
+  export let redAutoScore = "--";
+  export let redTeleopScore = "--";
+  export let redEndgameScore = "--";
+  export let redFouls = "--";
+  export let redTotalScore = "--";
+  export let blueAutoScore = "--";
+  export let blueTeleopScore = "--";
+  export let blueEndgameScore = "--";
+  export let blueFouls = "--";
+  export let blueTotalScore = "--";
+
+
+  const redWins = redTotalScore > blueTotalScore;
+
+</script>
+
+
 
 
 <div class="flex justify-center mt-4">
@@ -10,30 +28,34 @@
       <th class="px-4 py-2 border">Endgame Score</th>
       <th class="px-4 py-2 border">Fouls</th>
       <th class="px-4 py-2 border">Total Score</th>
-      <th class="px-4 py-2 border">Net EPA</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr class="bg-red-100 border-t-4 border-b-4 border-yellow-300">
-      <td class="px-4 py-2 border font-semibold text-red-600">Red</td>
-      <td class="px-4 py-2 border">12</td>
-      <td class="px-4 py-2 border">40</td>
-      <td class="px-4 py-2 border">10</td>
-      <td class="px-4 py-2 border">5</td>
-      <td class="px-4 py-2 border font-semibold">67</td>
-      <td class="px-4 py-2 border-r-4 border-yellow-300 text-red-600 font-semibold">60.31</td>
+    <tr class="bg-red-100" class:boldText={redWins}>
+      <td class="px-4 py-2 border ">Red</td>
+      <td class="px-4 py-2 border">{redAutoScore}</td>
+      <td class="px-4 py-2 border">{redTeleopScore}</td>
+      <td class="px-4 py-2 border">{redEndgameScore}</td>
+      <td class="px-4 py-2 border">{redFouls}</td>
+      <td class="px-4 py-2 border">{redTotalScore}</td>
     </tr>
 
     <tr class="bg-blue-100">
-      <td class="px-4 py-2 border font-semibold text-blue-600">Blue</td>
-      <td class="px-4 py-2 border">4</td>
-      <td class="px-4 py-2 border">23</td>
-      <td class="px-4 py-2 border">2</td>
-      <td class="px-4 py-2 border">0</td>
-      <td class="px-4 py-2 border font-semibold">29</td>
-      <td class="px-4 py-2 border text-blue-600 font-semibold">54.32</td>
+      <td class="px-4 py-2 border text-blue-600" class:boldText={!redWins}>Blue</td>
+      <td class="px-4 py-2 border">{blueAutoScore}</td>
+      <td class="px-4 py-2 border">{blueTeleopScore}</td>
+      <td class="px-4 py-2 border">{blueEndgameScore}</td>
+      <td class="px-4 py-2 border">{blueFouls}</td>
+      <td class="px-4 py-2 border text-blue-600 ">{blueTotalScore}</td>
     </tr>
   </tbody>
 </table>
 </div>
+
+
+<style>
+  .boldText {
+    font-weight: 700;
+  }
+</style>
