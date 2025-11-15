@@ -1,4 +1,6 @@
 <script>
+
+  //makes default values if there is no data from API and getting API data
   export let redAutoScore = "--";
   export let redTeleopScore = "--";
   export let redEndgameScore = "--";
@@ -32,6 +34,7 @@
   </thead>
 
   <tbody>
+    <!-- Bolds if red won and passes API data-->
     <tr class="bg-red-100" class:boldText={redWins}>
       <td class="px-4 py-2 border ">Red</td>
       <td class="px-4 py-2 border">{redAutoScore}</td>
@@ -40,7 +43,7 @@
       <td class="px-4 py-2 border">{redFouls}</td>
       <td class="px-4 py-2 border">{redTotalScore}</td>
     </tr>
-
+    <!-- Bolds if red won and passes API data-->
     <tr class="bg-blue-100">
       <td class="px-4 py-2 border text-blue-600" class:boldText={!redWins}>Blue</td>
       <td class="px-4 py-2 border">{blueAutoScore}</td>
@@ -53,7 +56,7 @@
 </table>
 </div>
 
-
+<!-- Style for bolding -->
 <style>
   .boldText {
     font-weight: 700;

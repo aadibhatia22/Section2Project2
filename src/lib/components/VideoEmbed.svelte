@@ -11,6 +11,7 @@
       title={videoId}
     ></iframe>
   {:else}
+    <!-- Handels case for no video -->
     <p class="text-gray-500">No video available</p>
   {/if}
 </div>

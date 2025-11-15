@@ -1,4 +1,5 @@
 <script>
+  //getting API data 
   export let matchKey;
   export let matchName;
 
@@ -10,7 +11,7 @@
 
 
 
-
+<!-- Makes the headings-->
 <h1 class="text-2xl font-bold text-center mt-4 matchKey">
   {matchKey}
 </h1>

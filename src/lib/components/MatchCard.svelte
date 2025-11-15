@@ -7,13 +7,20 @@
   export let match;
 
 </script>
-<MatchInfo 
+
+<!-- Making the shadow for the cards to make it look nice -->
+<div class="bg-gray-50 p-6 rounded-xl shadow-xl max-w-4xl mx-auto mt-10">
+
+
+  <!-- Making the title and subheadings -->
+  <MatchInfo 
   matchKey={match.key}
   matchName={match.match_name}
 
 />
-
+<!-- Passing all the match data to the table -->
 <ScoreTable 
+  
   redAutoScore={match.result.red_auto_points}
   redTeleopScore={match.result.red_teleop_points}
   redEndgameScore={match.result.red_endgame_points}
@@ -29,6 +36,7 @@
 
 
 />
+<!-- creating the team list and video -->
 
 <div class="mt-10 flex justify-center">
   <div class="flex gap-20 items-start">
@@ -44,3 +52,4 @@
   </div>
 </div>
 <div class="mb-10"></div>
+</div>

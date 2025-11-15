@@ -4,7 +4,7 @@
     let errorMessage = "";
 
     let matchObjectArray = [];
-
+    //makes function to load data from the API
     async function fetchFromAPI(eventCode){
         const res = await fetch(`https://api.statbotics.io/v3/matches?event=${eventCode}`);
         if(!res.ok){
@@ -13,11 +13,12 @@
         }
         return res.json();
     }
-
+  //checks for any errors and passes API data to the matchObjectArray variable
   async function loadMatches() {
     errorMessage = "";
     try {
       matchObjectArray = await fetchFromAPI(eventCode.trim());
+      //for checking purposes
       console.log("Matches:", matchObjectArray[0]);
     } catch (err) {
       console.error(err);
@@ -29,7 +30,7 @@
 </script>
 
 
-  <!-- ERROR DISPLAY -->
+  <!-- Displaying the errors -->
   {#if errorMessage}
     <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
       {errorMessage}
@@ -37,7 +38,7 @@
   {/if}
 
 
-<!-- INPUT HANDELING -->
+<!-- Making the input elements -->
 <div class="flex justify-center mt-10 gap-3">
   <input
     bind:value={eventCode}
@@ -54,7 +55,7 @@
 </div>
 
 
-<!-- making the matchcards  -->
+<!-- making the matchcards from the API data filled array  -->
 {#if matchObjectArray.length > 0}
   {#each matchObjectArray as match}
     <MatchCard {match} />
@@ -69,7 +70,7 @@
 
 
 
-<!-- STYLE -->
+<!-- style for button -->
 <style>
   .hoverColorChange {
     transition: opacity 0.25s ease;  
